@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
@@ -128,5 +129,12 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+        <script>
+            Echo.channel('reviews')
+                .listen('ReviewCreated', (e) => {
+                    alert(`Добавлен новый отзыв ${e.review.text}`);
+                })
+        </script>
     </body>
 </html>

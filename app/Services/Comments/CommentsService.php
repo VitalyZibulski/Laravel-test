@@ -26,7 +26,7 @@ class CommentsService
         return $this->commentGetAllHandler->handle();
     }
 
-    public function createReview(array $data): Comment
+    public function createComment(array $data): Comment
     {
         return $this->commentCreateHandler->handle($data);
     }

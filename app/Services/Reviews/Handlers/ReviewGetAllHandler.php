@@ -4,6 +4,7 @@ namespace App\Services\Reviews\Handlers;
 
 use App\Services\Reviews\Repositories\ReviewsRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ReviewGetAllHandler
 {
@@ -14,7 +15,7 @@ class ReviewGetAllHandler
         $this->reviewsRepository = $reviewsRepository;
     }
 
-    public function handle(): Collection
+    public function handle(): LengthAwarePaginator
     {
         return $this->reviewsRepository->getAll();
     }

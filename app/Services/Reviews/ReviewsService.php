@@ -6,6 +6,7 @@ use App\Models\Review;
 use App\Services\Reviews\Handlers\ReviewGetAllHandler;
 use App\Services\Reviews\Handlers\ReviewCreateHandler;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ReviewsService
 {
@@ -21,7 +22,7 @@ class ReviewsService
         $this->reviewCreateHandler = $reviewCreateHandler;
     }
 
-    public function getReviews(): Collection
+    public function getReviews(): LengthAwarePaginator
     {
         return $this->reviewGetAllHandler->handle();
     }
