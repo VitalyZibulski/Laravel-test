@@ -41,10 +41,4 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
-
-    // cut json +
-    // Request -
-    // token +
-    // check middleware +
-    // push
 }

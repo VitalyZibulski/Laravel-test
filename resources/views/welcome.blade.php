@@ -134,6 +134,10 @@
             Echo.channel('reviews')
                 .listen('ReviewCreated', (e) => {
                     alert(`Добавлен новый отзыв ${e.review.text}`);
+                });
+            Echo.private('comments.{{ auth()->id() }}')
+                .listen('CommentCreated', (e) => {
+                    alert(`Добавлен новый комментарий ${e.comment.text}`);
                 })
         </script>
     </body>

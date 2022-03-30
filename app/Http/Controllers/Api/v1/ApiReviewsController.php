@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Events\ReviewCreated;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReviewRequest;
 use App\Http\Resources\ReviewResource;
 use App\Services\Reviews\ReviewsService;
 use Illuminate\Http\Request;
@@ -27,9 +28,11 @@ class ApiReviewsController extends Controller
         return new ReviewResource($reviews);
     }
 
-    public function store(Request $request)
+    public function store(StoreReviewRequest $request)
     {
         $review = $this->reviewsService->createReview($request->all());
         ReviewCreated::dispatch($review);
+
+        return new ReviewResource($review);
     }
 }

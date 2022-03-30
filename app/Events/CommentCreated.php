@@ -14,12 +14,14 @@ class CommentCreated implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     protected Comment $comment;
+    private $userId;
 
     /**
      * @param Comment $comment
      */
-    public function setComment(Comment $comment): void
+    public function __construct($userId, Comment $comment)
     {
+        $this->userId = $userId;
         $this->comment = $comment;
     }
 
@@ -30,6 +32,6 @@ class CommentCreated implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel("comments.{$this->userId}");
     }
 }

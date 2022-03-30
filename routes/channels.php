@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('reviews', function ($user, $reviewId) {
+Broadcast::channel("reviews", function ($user, $reviewId) {
     return true;
+});
+
+Broadcast::channel("comments.{userId}", function ($userId, $comment) {
+    return (int) $userId === (int) $comment->user_id;
 });

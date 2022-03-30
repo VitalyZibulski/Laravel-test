@@ -22,7 +22,7 @@ class ReviewCreated implements ShouldBroadcast
 
     /**
      * Get the channels the event should broadcast on.
-     *Т
+     *
      * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn()
